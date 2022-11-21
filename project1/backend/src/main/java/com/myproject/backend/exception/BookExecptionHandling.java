@@ -1,4 +1,4 @@
-package com.myproject.backend.bookException;
+package com.myproject.backend.exception;
 
 import com.myproject.backend.responseMessage.ResponseMessage;
 import org.springframework.http.HttpStatus;
