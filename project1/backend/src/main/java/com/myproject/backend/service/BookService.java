@@ -1,4 +1,4 @@
-package com.myproject.backend.bookService;
+package com.myproject.backend.service;
 
 import com.myproject.backend.entity.Book;
 import com.myproject.backend.helper.CSVHelper;

@@ -2,8 +2,10 @@ package com.myproject.backend.entity;
 
 import javax.persistence.*;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 
@@ -18,8 +20,13 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
+    //@Column(nullable = false)
     private String name;
+
+
+    @Column(nullable = false, unique = true)
+    private String username;
+
     @Column(nullable = false, unique = true)
     private String email;
     @Column(nullable = false)
@@ -31,4 +38,7 @@ public class User {
             inverseJoinColumns = { @JoinColumn(name = "role_id", referencedColumnName = "id") }
     )
     private List<Role> roles = new ArrayList<>();
+
+    public User(String username, String password, Collection<GrantedAuthority> authorities) {
+    }
 }
