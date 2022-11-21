@@ -23,7 +23,7 @@ public class BookController {
     @Autowired
     private BookRepository repository;
 
-
+/*
     @Operation(summary = "Get a book by its id")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Found the book",
@@ -36,7 +36,7 @@ public class BookController {
             @ApiResponse(responseCode = "403", description = "forbidden",
                     content = @Content),
             @ApiResponse(responseCode = "404", description = "Book not found",
-                    content = @Content) })
+                    content = @Content) })*/
     @GetMapping("/{id}")
     public Optional<Book> findById(@PathVariable long id) {
         return repository.findById(id);
