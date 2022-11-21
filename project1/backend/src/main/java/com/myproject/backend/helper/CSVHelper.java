@@ -26,25 +26,25 @@ public class CSVHelper {
         return true;
     }
 
-    public static List<Book> csvToTutorials(InputStream is) {
+    public static List<Book> csvToBooks(InputStream is) {
         try (BufferedReader fileReader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
              CSVParser csvParser = new CSVParser(fileReader,
                      CSVFormat.DEFAULT.withFirstRecordAsHeader().withIgnoreHeaderCase().withTrim());) {
 
-            List<Book> tutorials = new ArrayList<Book>();
+            List<Book> books = new ArrayList<Book>();
 
             Iterable<CSVRecord> csvRecords = csvParser.getRecords();
 
             for (CSVRecord csvRecord : csvRecords) {
-                Book tutorial = new Book(
+                Book book = new Book(
                         Long.parseLong(csvRecord.get("Id")),
                         csvRecord.get("Title")
                 );
 
-                tutorials.add(tutorial);
+                books.add(book);
             }
 
-            return tutorials;
+            return books;
         } catch (IOException e) {
             throw new RuntimeException("fail to parse CSV file: " + e.getMessage());
         }
