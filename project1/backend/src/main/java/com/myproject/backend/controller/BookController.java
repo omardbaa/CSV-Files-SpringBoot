@@ -42,7 +42,7 @@ public class BookController {
     }
 
 
-    @PostMapping
+    @PostMapping("/admin")
     public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file) {
         String message = "";
 
@@ -62,16 +62,16 @@ public class BookController {
     }
 
 
-    @GetMapping
-    public ResponseEntity<List<Book>> getAllTutorials() {
+    @GetMapping("/user")
+    public ResponseEntity<List<Book>> getAllBooks() {
         try {
-            List<Book> tutorials = bookService.getAllBooks();
+            List<Book> books = bookService.getAllBooks();
 
-            if (tutorials.isEmpty()) {
+            if (books.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
 
-            return new ResponseEntity<>(tutorials, HttpStatus.OK);
+            return new ResponseEntity<>(books, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
