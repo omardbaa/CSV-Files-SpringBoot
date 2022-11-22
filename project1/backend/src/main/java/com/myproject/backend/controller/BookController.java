@@ -1,10 +1,12 @@
 package com.myproject.backend.controller;
 
+import com.myproject.backend.entity.User;
 import com.myproject.backend.service.BookService;
 import com.myproject.backend.entity.Book;
 import com.myproject.backend.helper.CSVHelper;
 import com.myproject.backend.repository.BookRepository;
 import com.myproject.backend.responseMessage.ResponseMessage;
+import com.myproject.backend.service.SecurityServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -22,9 +24,15 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+
+
 @RequestMapping("/api/book")
 @Tag(name = "books", description = "all endpoints ")
 public class BookController {
+    @Autowired
+    private SecurityServiceImpl service;
+
+
 
     @Autowired
 
@@ -79,6 +87,14 @@ public class BookController {
 
 
 
+
+
+    @PostMapping("/register")
+    public String registerDefaultUser(@RequestBody User user) {
+        System.out.println(user);
+        service.registerDefaultUser(user);
+        return "user created";
+    }
 
 
    /* @Operation(summary = "Get a book by its id")

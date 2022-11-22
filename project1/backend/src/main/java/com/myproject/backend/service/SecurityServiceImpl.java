@@ -11,6 +11,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
+
 
 @Service
 @Slf4j
@@ -33,6 +35,17 @@ public class SecurityServiceImpl implements AccountService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+
+
+
+    public User registerDefaultUser(User user) {
+        String password = user.getPassword();
+        user.setPassword(passwordEncoder.encode(password));
+
+        user.setRoles(Arrays.asList(roleRepositroy.findByName("USER")));
+        return userRepositroy.save(user);
+    }
+
     @Override
     public User saveNewUser(Long id, String name, String username, String email, String password, String rePassword) {
         if(!password.equals(rePassword)) throw new RuntimeException("Password not match") ;
@@ -44,10 +57,16 @@ public class SecurityServiceImpl implements AccountService {
         user.setUsername(username);
         user.setName(name);
         user.setPassword(hashedPWD);
+        user.setRoles(Arrays.asList(roleRepositroy.findByName("USER")));
 
         User savedAppUser= userRepositroy.save(user);
         return savedAppUser;
     }
+
+
+
+
+
 
     @Override
     public Role saveNewRole(String roleName, String description) {
@@ -89,5 +108,6 @@ public class SecurityServiceImpl implements AccountService {
     public User loadUserByUserName(String username) {
         return userRepositroy.findByUsername(username);
     }
+
 
 }
