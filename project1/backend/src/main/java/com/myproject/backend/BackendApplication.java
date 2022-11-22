@@ -24,24 +24,7 @@ public class BackendApplication {
 		SpringApplication.run(BackendApplication.class, args);
 	}
 
-	CommandLineRunner saveUser(UserRepository securityService) {
 
-		return args -> {
-			securityService.save(new User(1L, "one","one1" ,"one1@gmail.com","123", ));
-			securityService.saveNewUser(2L, "two","two2" ,"two2@gmail.com","123", "123");
-			securityService.saveNewUser(3L, "three","three3" ,"three3@gmail.com","123", "123");
-
-
-			securityService.saveNewRole("USER", "");
-			securityService.saveNewRole("ADMIN", "");
-
-			securityService.addRoleToUser("one1", "USER");
-			securityService.addRoleToUser("one1", "ADMIN");
-			securityService.addRoleToUser("two2", "USER");
-			securityService.addRoleToUser("three3", "USER");
-
-
-		};
 
 
 
