@@ -39,6 +39,5 @@ public class User {
     )
     private List<Role> roles = new ArrayList<>();
 
-    public User(String username, String password, Collection<GrantedAuthority> authorities) {
-    }
+
 }

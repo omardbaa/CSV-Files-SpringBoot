@@ -25,7 +25,7 @@ public class BackendApplication {
 
 		return new BCryptPasswordEncoder();
 	}
-	//@Bean
+//	@Bean
 	CommandLineRunner saveUser(AccountService securityService) {
 
 		return args -> {
@@ -44,6 +44,7 @@ public class BackendApplication {
 
 
 		};
+		
 
 	}
 }

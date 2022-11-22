@@ -23,7 +23,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/book")
-@Tag(name = "books", description = "hhhhh")
+@Tag(name = "books", description = "all endpoints ")
 public class BookController {
 
     @Autowired
@@ -78,8 +78,17 @@ public class BookController {
     }
 
 
-    @Operation(summary = "Get a book by its id")
-    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "Found the book", content = {@Content(mediaType = "application/json", schema = @Schema(implementation = Book.class))}), @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = @Content), @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content), @ApiResponse(responseCode = "403", description = "forbidden", content = @Content), @ApiResponse(responseCode = "404", description = "Book not found", content = @Content)})
+
+
+
+   /* @Operation(summary = "Get a book by its id")
+    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "Found the book", content =
+
+            {@Content(mediaType = "application/json", schema = @Schema(implementation = Book.class))}),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = @Content),
+            @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content),
+            @ApiResponse(responseCode = "403", description = "forbidden", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Book not found", content = @Content)})*/
     @GetMapping("/{id}")
     public Optional<Book> findById(@PathVariable long id) {
         return bookRepository.findById(id);
