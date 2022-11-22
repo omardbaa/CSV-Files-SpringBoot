@@ -1,20 +1,11 @@
 package com.myproject.backend.controller;
 
-<<<<<<< HEAD
-import com.myproject.backend.entity.User;
-=======
->>>>>>> fortest
+
 import com.myproject.backend.service.BookService;
 import com.myproject.backend.entity.Book;
 import com.myproject.backend.helper.CSVHelper;
 import com.myproject.backend.repository.BookRepository;
 import com.myproject.backend.responseMessage.ResponseMessage;
-import com.myproject.backend.service.SecurityServiceImpl;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,8 +23,7 @@ import java.util.Optional;
 @RequestMapping("/api/book")
 @Tag(name = "books", description = "all endpoints ")
 public class BookController {
-    @Autowired
-    private SecurityServiceImpl service;
+
 
 
 
@@ -92,12 +82,6 @@ public class BookController {
 
 
 
-    @PostMapping("/register")
-    public String registerDefaultUser(@RequestBody User user) {
-        System.out.println(user);
-        service.registerDefaultUser(user);
-        return "user created";
-    }
 
 
    /* @Operation(summary = "Get a book by its id")
